@@ -133,9 +133,13 @@ Buddies also lend judgment, not just cycles: a node can send a job's dev-branch
 diff to a buddy's node for **code review**. The buddy's local LLM reviews it and
 votes approve/reject, and the buddy's human may add their own vote and comments;
 both arrive back as advisory votes on the requesting job's timeline, beside the
-operator's own approve/reject decision. Promotion authority never leaves the
-operator (§4.4's human-approval rule applies) — a buddy's vote informs, it never
-decides. Note that JLY payments settle existing PoW-issued coins between
+operator's own approve/reject decision. Review work is metered exactly like
+compute: the reviewing node charges the requester's wallet on a delivered
+verdict (comped, never blocked, if broke), and the requesting node's treasury
+credits the reviewer's wallet when the verdict first arrives — once per review,
+with a later human vote on the same review never billed again. Promotion
+authority never leaves the operator (§4.4's human-approval rule applies) — a
+buddy's vote informs, it never decides. Note that JLY payments settle existing PoW-issued coins between
 wallets; no coin is ever minted for buddy work — issuance remains exclusively
 §3's proof-of-work.
 

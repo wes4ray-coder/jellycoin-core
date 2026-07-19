@@ -58,11 +58,15 @@ useful work between friends' nodes:
   fee into the company wallet. A broke buddy is **comped, never blocked** — the
   job still runs and the tab is recorded, because helping a friend must not
   break over play money.
-- **Code review and votes.** A buddy's node will review your dev-branch diff:
-  their local LLM reads it and votes approve/reject, and their *human* can add
-  their own vote and comments — both land as advisory votes right on your job's
-  timeline, next to your own Approve button. Second opinions from someone who
-  isn't you, wired into the promote flow.
+- **Code review and votes — paid work.** A buddy's node will review your
+  dev-branch diff: their local LLM reads it and votes approve/reject, and their
+  *human* can add their own vote and comments — both land as advisory votes
+  right on your job's timeline, next to your own Approve button. A review bills
+  like a full AI job: when the verdict lands, your treasury **pays** their
+  wallet (once per review — their human's later vote is never double-billed),
+  and on their side your wallet is charged for their model's time, comped if
+  you're broke. Second opinions from someone who isn't you, wired into the
+  promote flow — and worth real JLY.
 
 No coin is ever minted for favors — mining is the only place new JLY appears;
 the buddy economy just makes the mined coins mean something between people.
