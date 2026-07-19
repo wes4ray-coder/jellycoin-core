@@ -17,9 +17,18 @@ software.
 
 | File | What it is |
 |---|---|
-| `core.py` | The reference authority-node core: ledger, wallets, PoW verification, difficulty retargeting, boost tickets, NFTs. Stdlib only, one SQLite file. |
+| `core.py` | The reference authority-node core: ledger, wallets, transfers, PoW verification, difficulty retargeting, boost tickets, NFTs. Stdlib only, one SQLite file. |
 | `node.py` | Minimal HTTP node (FastAPI) exposing the getwork/submit mining protocol. |
 | `WHITEPAPER.md` | The full design + consensus spec. |
+
+**Scope:** these two files are the *chain* — everything in white paper §2–§3 plus
+the base economy. The federation features the white paper also describes — the
+buddy compute/review economy (§4.2), the buddy-share mining pool (§4.5), and
+host/joined mode (§2.1) — are **store-side** and live in the
+[Store](https://github.com/wes4ray-coder/store-command-center-public), not here.
+They sit on top of this core rather than changing it: a rig mining against
+`node.py` behaves exactly as §3 specifies. Read the spec sections for what those
+features do; read the Store for a working implementation.
 
 ```bash
 python3 core.py selftest     # end-to-end check: genesis → mined block → transfers → NFT

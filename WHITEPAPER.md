@@ -229,3 +229,12 @@ dependencies) is published as open source. The GPU miner ships with the JellyNow
 Store distribution — mining JLY means joining a JellyNow node's network, which is
 the point: the coin exists to make one small community's hardware, art, and
 agents worth playing with.
+
+**What lives where.** `core.py` + `node.py` in the open-source core implement
+§2–§3 (ledger, wallets, transfers, the PoW spec and retargeting) and the base
+economy of §4 (boosts, NFTs). The federation layer — buddy compute and paid code
+review (§4.2), the buddy-share mining pool (§4.5), and host/joined mode (§2.1) —
+is implemented in the Store, not in the reference core. That split is deliberate:
+those features are policy on top of consensus, and a node that implements only
+§3 still interoperates with any rig. An implementer wanting just the coin needs
+§3 alone; the federation sections describe how one community chose to use it.
