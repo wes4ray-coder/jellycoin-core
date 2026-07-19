@@ -44,6 +44,34 @@ Old graphics cards are first-class citizens: the kernel is plain OpenCL 1.1, so 
 card far too old for AI still mines JLY happily. CPUs are excluded by design —
 don't ask, don't "fix" it.
 
+## 🤝 Buddy-share mining pool
+
+Buddies already share the node's AI compute, metered in JLY (white paper §4.2).
+The buddy-share pool extends the same idea to mining: instead of every rig racing
+winner-take-all, a node operator can flip the pool ON and friends' GPUs mine
+**together**, splitting each block's reward by work actually contributed.
+
+How the flow works:
+
+- **Opt-in, off by default.** With the pool OFF nothing changes — first valid
+  block submission wins the whole reward, exactly as §3.1 specifies.
+- **Shares.** With the pool ON, `GET /work` additionally returns a
+  `share_target` 65 536× easier than the block target. Rigs grind to the share
+  target, so every rig — including the old slow cards — lands accepted shares
+  every round, each one a verifiable partial proof-of-work.
+- **Pro-rata split.** When any rig finds a real block, the reward is divided
+  across rig owners in proportion to their accepted shares that round. Integer
+  accounting, any rounding remainder goes to the rig that solved the block, and
+  the **pool fee is zero**.
+- **Buddy payouts.** A rig is mapped to its owner's `peer:<name>` buddy wallet,
+  so a friend pointing their GPU at your node gets paid to the same wallet their
+  compute-sharing fees land in.
+
+The pool toggle, stats, and buddy mapping live in the JellyNow Store UI
+(`🤝 Buddy-Share Mining Pool` panel on the JellyCoin tab); the miner needs no
+flags — it grinds to the share target automatically whenever the node hands one
+out.
+
 ## Keys & secrets — what exists and what doesn't
 
 Worth being explicit, since it's a "coin":

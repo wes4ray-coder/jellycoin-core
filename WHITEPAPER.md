@@ -86,6 +86,11 @@ returns accept/reject. Work expires in 10 minutes; the first valid submission at
 a height wins; later ones are rejected as stale. The node *verifies* hashes — it
 never generates them.
 
+When the node's buddy-share pool (§4.5) is enabled, `GET /work` additionally
+carries a `share_target` — a target 65 536× easier than the block target — and
+submissions meeting it are recorded as shares rather than rejected. Consensus is
+unchanged: only hashes meeting the true block target mint a block.
+
 ### 3.2 Why GPU-only holds
 
 The reference miner enumerates OpenCL **GPU devices only** and refuses to start
@@ -139,6 +144,21 @@ announces it inside the community. Nothing external is ever auto-posted, and JLY
 is never sold for real money by software. This is a hard design rule, kept partly
 for honesty and partly because selling tokens for real money is a regulated
 activity that a hobby coin has no business wandering into.
+
+### 4.5 Buddy-share mining pool
+
+Buddy compute (§4.2) shares the node's AI; the buddy-share pool shares its
+mining. It is **opt-in and off by default** — a disabled pool is exactly the
+winner-take-all protocol of §3.1.
+
+Enabled, each rig grinds to the easier share target and its accepted shares are
+tallied per round as verifiable partial proofs-of-work. When a rig finds a real
+block, the reward splits across rig **owners** pro-rata by shares that round:
+integer accounting, remainder to the solving rig, **zero pool fee**. A buddy's
+rig is mapped to their `peer:<name>` wallet — the same wallet their compute
+fees settle in — so hashpower and AI-sharing earn into one balance. Old GPUs
+benefit most: a card too slow to ever win a block outright still lands shares
+every round and gets paid for them.
 
 ## 5. Security model
 
