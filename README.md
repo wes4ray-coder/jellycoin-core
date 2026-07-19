@@ -44,12 +44,36 @@ Old graphics cards are first-class citizens: the kernel is plain OpenCL 1.1, so 
 card far too old for AI still mines JLY happily. CPUs are excluded by design —
 don't ask, don't "fix" it.
 
+## 🧑‍🤝‍🧑 The buddy economy — JLY is pay for real help
+
+JLY isn't just mined — it's the **working coin of the buddy federation**. Every
+coin in circulation was issued by GPU proof-of-work (or the audited genesis
+premine); buddy payments then *move* those coins around as pay for genuinely
+useful work between friends' nodes:
+
+- **Your buddy's box does AI work for you** (a delegated LLM job) → your
+  treasury **pays** their `peer:<name>` wallet the per-job fee (default 1 JLY;
+  embeddings cost ¹⁄₁₀).
+- **Your buddy uses *your* AI helper** → their wallet is **charged** the same
+  fee into the company wallet. A broke buddy is **comped, never blocked** — the
+  job still runs and the tab is recorded, because helping a friend must not
+  break over play money.
+- **Code review and votes.** A buddy's node will review your dev-branch diff:
+  their local LLM reads it and votes approve/reject, and their *human* can add
+  their own vote and comments — both land as advisory votes right on your job's
+  timeline, next to your own Approve button. Second opinions from someone who
+  isn't you, wired into the promote flow.
+
+No coin is ever minted for favors — mining is the only place new JLY appears;
+the buddy economy just makes the mined coins mean something between people.
+
 ## 🤝 Buddy-share mining pool
 
-Buddies already share the node's AI compute, metered in JLY (white paper §4.2).
-The buddy-share pool extends the same idea to mining: instead of every rig racing
-winner-take-all, a node operator can flip the pool ON and friends' GPUs mine
-**together**, splitting each block's reward by work actually contributed.
+Buddies already share the node's AI compute, metered in JLY (above; white paper
+§4.2). The buddy-share pool extends the same idea to mining: instead of every
+rig racing winner-take-all, a node operator can flip the pool ON and friends'
+GPUs mine **together**, splitting each block's reward by work actually
+contributed.
 
 How the flow works:
 

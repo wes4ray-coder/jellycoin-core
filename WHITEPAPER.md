@@ -129,6 +129,16 @@ company wallet (embeddings cost ¹⁄₁₀). A buddy with no balance is **compe
 blocked** — the tab is recorded, because compute sharing must not break over play
 money. Peers audit their own wallet through an authenticated RPC.
 
+Buddies also lend judgment, not just cycles: a node can send a job's dev-branch
+diff to a buddy's node for **code review**. The buddy's local LLM reviews it and
+votes approve/reject, and the buddy's human may add their own vote and comments;
+both arrive back as advisory votes on the requesting job's timeline, beside the
+operator's own approve/reject decision. Promotion authority never leaves the
+operator (§4.4's human-approval rule applies) — a buddy's vote informs, it never
+decides. Note that JLY payments settle existing PoW-issued coins between
+wallets; no coin is ever minted for buddy work — issuance remains exclusively
+§3's proof-of-work.
+
 ### 4.3 Art NFTs
 
 An NFT is minted from a real artwork file: the file's SHA-256 becomes the token's
