@@ -50,6 +50,32 @@ What it keeps — and what separates JLY from a points table:
 - **The chain is exportable.** Nightly snapshots mean the full history can be
   audited or re-hosted.
 
+### 2.1 One network, not one per install
+
+An authority-node design has a failure mode that decentralized chains don't: if
+every install founds its own chain on first run, a hundred users produce a
+hundred unrelated coins. Nothing is shared, no balance means anything to anyone
+else, and the network effect is exactly zero — the ledger is centralized *and*
+fragmented, the worst of both.
+
+A node therefore starts in one of two modes:
+
+- **host** — founds its own chain (genesis, premine, mining) and *is* a network.
+- **joined** — founds **no chain**: no genesis block is written, no premine is
+  issued, and the node refuses to serve `getwork` so a rig cannot quietly start
+  the island the operator declined. It participates on a chosen node's chain,
+  reading its wallet there over the authenticated peer RPC (§4.2) and pointing
+  its rigs at that node's URL.
+
+Joining is permitted only while the local chain is unused (no mined blocks, no
+transfers beyond the genesis premine); past that, switching would strand coins
+that exist on no other ledger. Switching back to host re-founds a chain, and the
+coins earned on the old network stay there — they were never this node's to move.
+
+The consequence worth stating plainly: **growth means more participants on one
+chain, not more chains.** A federation of joined nodes around one host is a
+network; a hundred hosts are a hundred toys.
+
 ## 3. Proof-of-work specification
 
 An implementation needs exactly this section.

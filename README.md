@@ -30,6 +30,21 @@ JELLY_TOKEN=changeme uvicorn node:app --port 8799   # run your own node
 Run your own node and you have your own chain, your own genesis, your own economy —
 this code is the *how*, yours to build on.
 
+**Or don't found one.** A JellyCoin store can start in one of two modes, and the
+choice matters more than it looks:
+
+| Mode | What it means |
+|---|---|
+| **host** | Founds its own chain: genesis, premine, local mining. Your own network. |
+| **joined** | Founds **no chain at all** — no genesis, no premine, and local mining is refused. A buddy's node is your ledger; your JLY lives in your wallet there. |
+
+Without that choice every install silently wrote its own genesis, so ten friends
+running the store made ten unrelated coins that could never add up — one island
+per install, which is the opposite of a network. Joining retires the starter
+chain (only ever allowed while it is unused, so no coins are stranded) and makes
+you a participant on someone else's. Growth means more people on **one** chain,
+not more chains.
+
 ## ⛏️ Want to mine actual JLY?
 
 **The live JellyCoin network runs at [JellyNow](https://jellynow.live).** Mining
